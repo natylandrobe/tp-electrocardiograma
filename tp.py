@@ -33,11 +33,17 @@ peaks = ecg["señal"].iloc[peak_index]
 #Tomo los tiempos en los que se produjeron los picos
 peak_times = ecg["tiempo"].iloc[peak_index]
 
+#Calculo la frec con una regla de 3 tomando la cantidad de picos producidos en el tiempo en que se tienen los datos
+frec = int(60*len(peaks)/ecg["tiempo"].iloc[-1])
 
 #Grafico
 plt.plot(peak_times, peaks, 'go', label = "Picos")
 plt.plot(ecg["tiempo"], ecg["señal"])
+plt.title("ECG. Frecuencia = " + str(frec))
 plt.xlabel("s")
 plt.ylabel("eV")
 plt.legend()
+plt.grid(b = True, which = 'both')
+plt.minorticks_on()
+plt.grid(b = True, which = 'minor')
 plt.show()
