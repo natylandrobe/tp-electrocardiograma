@@ -80,7 +80,7 @@ peaks, peak_times = get_heartbeats(ecg)
 
 #Calculo la frec con una regla de 3 tomando la cantidad de picos producidos en el tiempo en que se tienen los datos
 frec = int(60*len(peaks)/ecg["tiempo"].iloc[-1])
-print("La frecuencia cardíaca es de", frec, "pulsaciones por minuto")
+print("La frecuencia cardíaca es de", frec, "pulsaciones por minuto\n")
 
 status = get_status(frec, sex, age)
 print(status)
@@ -101,3 +101,18 @@ plt.minorticks_on()
 plt.grid(b = True, which = 'minor')
 plt.show()
 
+png_name = want_to_save()
+if png_name is not None:
+
+    png_name = png_name + ".png"
+    plt.plot(peak_times, peaks, 'go', label = "Picos")
+    plt.plot(ecg["tiempo"], ecg["señal"])
+    plt.title("ECG. Frecuencia = " + str(frec))
+    plt.xlabel("s")
+    plt.ylabel("eV")
+    plt.legend()
+    plt.grid(b = True, which = 'both')
+    plt.minorticks_on()
+    plt.grid(b = True, which = 'minor')
+
+    plt.savefig(png_name)
