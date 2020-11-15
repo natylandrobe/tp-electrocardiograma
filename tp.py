@@ -15,6 +15,7 @@ def get_heartbeats(ecg):
 
 def get_status(frec, sex, age):
 
+    #Frecuencias maximas por sexo
     max_m = 208.7 - 0.73*age
     max_f = 208.1 - 0.77*age
 
@@ -42,6 +43,8 @@ def want_to_save():
     elif ans == 'n':
         return None
     else:
+        print("Opción inválida\n")
+        #Pregunta hasta que se ingrese una opcion valiad
         return want_to_save()
 
 
