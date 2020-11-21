@@ -16,20 +16,18 @@ def get_heartbeats(ecg):
 def get_status(frec, sex, age):
 
     #Frecuencias maximas por sexo
-    max_m = 208.7 - 0.73*age
-    max_f = 208.1 - 0.77*age
+    max_frec_m = 208.7 - 0.73*age
+    max_frec_f = 208.1 - 0.77*age
 
     if frec == 0:
         status = "El paciente está muerto\n"
     elif (frec > 0) and (frec < 60):
         status = "El paciente está durmiendo\n"
     else:
-        if sex == 'M':
-            if frec < max_m:
-                status = "El paciente está haciendo ejercicio\n"
-        elif sex == 'F':
-            if frec < max_f:
-                status = "El paciente está haciendo ejercicio\n"
+        if sex == 'M' and frec < max_frec_m:
+            status = "El paciente está haciendo ejercicio\n"
+        elif sex == 'F' and frec < max_frec_f:
+            status = "El paciente está haciendo ejercicio\n"
         else:
             status = "Debe haber un error en las mediciones\n"
 
