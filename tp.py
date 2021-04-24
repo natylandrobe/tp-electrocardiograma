@@ -42,7 +42,7 @@ def want_to_save():
         return None
     else:
         print("Opción inválida\n")
-        #Pregunta hasta que se ingrese una opcion valiad
+        #Pregunta hasta que se ingrese una opcion valida
         return want_to_save()
 
 
@@ -75,7 +75,7 @@ while True:
     break
 
 #Leer el archivo del ECG y guardarlo en un dataframe
-ecg = pd.read_excel("https://raw.githubusercontent.com/IEEESBITBA/Curso-Python/master/Clase_4_datos/electrocardiograma.xlsx")
+ecg = pd.read_excel("./electrocardiograma.xlsx")
 
 peaks, peak_times = get_heartbeats(ecg)
 
